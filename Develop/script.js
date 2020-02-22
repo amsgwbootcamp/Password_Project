@@ -4,25 +4,34 @@ var passwordNotValid = true;
 
 function askForLowercase() {
   // Ask if they want lowercase letters in their password. 
-  var includeLowercase = prompt("Do you want lowercase letters in your password?" + "\n" + "Enter a 'Y' for yes and 'N' for no.");
-  /* alert("You entered the following for Lowercase: " + includeLowercase);  */
+  var includeLowercase = confirm("Do you want lowercase letters in your password?" + "\n" + "Click Ok for yes and Cancel for no.");
+  alert("You entered the following for Lowercase: " + includeLowercase); 
 }
 
 function askForUppercase() {
   // Ask if they want uppercase letters in their password. 
   
-  var includeUppercase = prompt("Do you want uppercase letters in your password?" + "\n" + "Enter a 'Y' for yes and 'N' for no.");
-  /* alert("You have entered the following for Uppercase: " + includeUppercase);  */
+  var includeUppercase = confirm("Do you want uppercase letters in your password?" + "\n" + "Click Ok for yes and Cancel for no.");
+  alert("You have entered the following for Uppercase: " + includeUppercase); 
   
 }
 
 function askForNumbers() {
   // Ask if they want numbers in their password. 
   
-  var includeNumbers = prompt("Do you want numbers in your password?" + "\n" + "Enter a 'Y' for yes and 'N' for no.");
-  /* alert("You have entered the following for numbers: " + includeNumbers);    */
+  var includeNumbers = confirm("Do you want numbers in your password?" + "\n" + "Click Ok for yes and Cancel for no.");
+  alert("You have entered the following for numbers: " + includeNumbers);    
   
+} 
+
+function askForSpecChars() {
+  // Ask if they want special characters in their password.
+
+  var includeSpecChars = confirm("Do you want special characters in your password?" + "\n" + "Click Ok for yes and Cancel for no.");
+  alert("You have entered the following for special characters: " + includeSpecChars);
+
 }
+
 function getPasswordLength() {  /*  function getPasswordLength()      */
   // Prompt for length of password
   // Check the value to be greater than 8 and less than or equal to 128
@@ -52,14 +61,18 @@ function getPasswordLength() {  /*  function getPasswordLength()      */
 
 // Write password to the #password input
 function writePassword() {
-  getPasswordLength();
-  askForLowercase();
-  askForUppercase();
-  askForNumbers();
-  alert("Back in writePassword");
-  /* var password = generatePassword();  */
-  var passwordText = document.querySelector("#password");
-  passwordText.value = password;
+    
+    getPasswordLength();
+    askForLowercase();
+    askForUppercase();
+    askForNumbers();
+    askForSpecChars();
+     
+    alert("Back in writePassword");
+    /* var password = generatePassword();  */
+    var passwordText = document.querySelector("#password");
+    passwordText.value = password;
+    
 }
 
 // Add event listener to generate button
