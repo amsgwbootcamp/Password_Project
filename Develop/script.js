@@ -29,7 +29,7 @@ function getPasswordLength() {  /*  function getPasswordLength()      */
   while (passwordNotValid) 
   { /* while loop */
     passwordLength = prompt("Please enter a value between 8 and 128.");
-    if (passwordLength.length != 0 || passwordLength != null) 
+    if (passwordLength.length != 0 && passwordLength != null) 
     {   /* if not 0 or null */
         if (passwordLength < 8) 
         {  /* if < 8  */
@@ -44,7 +44,9 @@ function getPasswordLength() {  /*  function getPasswordLength()      */
           alert("Password length has passed.");
           passwordNotValid = false;
         }  /* end of else */
-    }  /* end of if check */
+    } else /* end of if check */ 
+      alert("Goodbye!!!!!");
+      passwordNotValid = false;
   }  /* end of while */
 }   /* end of function getPasswordLength  */
 
