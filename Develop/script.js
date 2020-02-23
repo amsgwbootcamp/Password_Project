@@ -1,7 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 var passwordNotValid = true;
-var passwordIsGood = false;
+var passwordIsGood = true;
 var newPassword = "";
 var passwordLength = 0;
 var includeNumbers = false;
@@ -16,23 +16,21 @@ var masterArray = "";
 var randomArray = "";
 
 function askForLowercase() {
-  // Ask if they want lowercase letters in their password. 
+  /* Ask if they want lowercase letters in their password.    */ 
   var includeLowercase = confirm("Do you want lowercase letters in your password?" + "\n" + "Click Ok for yes and Cancel for no.");
   alert("You entered the following for Lowercase: " + includeLowercase); 
   return includeLowercase;
 }
 
 function askForUppercase() {
-  // Ask if they want uppercase letters in their password. 
-  
+  /* Ask if they want uppercase letters in their password.  */ 
   var includeUppercase = confirm("Do you want uppercase letters in your password?" + "\n" + "Click Ok for yes and Cancel for no.");
   alert("You have entered the following for Uppercase: " + includeUppercase); 
   return includeUppercase;
 }
 
 function askForNumbers() {
-  // Ask if they want numbers in their password. 
-  
+  /*  Ask if they want numbers in their password.   */
   var includeNumbers = confirm("Do you want numbers in your password?" + "\n" + "Click Ok for yes and Cancel for no.");
   alert("You have entered the following for numbers: " + includeNumbers);    
   return includeNumbers;
@@ -40,8 +38,7 @@ function askForNumbers() {
 } 
 
 function askForSpecChars() {
-  // Ask if they want special characters in their password.
-
+  /* Ask if they want special characters in their password.    */
   var includeSpecChars = confirm("Do you want special characters in your password?" + "\n" + "Click Ok for yes and Cancel for no.");
   alert("You have entered the following for special characters: " + includeSpecChars);
   return includeSpecChars;
@@ -49,9 +46,9 @@ function askForSpecChars() {
 
 function getPasswordLength() 
 {
-  /*  function getPasswordLength()      */
-  // Prompt for length of password
-  // Check the value to be greater than 8 and less than or equal to 128
+  /*  function getPasswordLength()      
+   Prompt for length of password      
+   Check the value to be greater than 8 and less than or equal to 128  */
   while (passwordNotValid) 
   { /* while loop */
     passwordLength = prompt("Please enter a value between 8 and 128.");
@@ -83,7 +80,7 @@ function getPasswordLength()
 }   /* end of function getPasswordLength  */
 
 function generatePassword() {
-  // Generate password and create master array from choices.  
+  /* Generate password and create master array from choices.  */ 
 
     alert("includeNumbers is set to: " + includeNumbers);
     if (includeNumbers ==  true) {
@@ -126,16 +123,17 @@ function generatePassword() {
 
 } /* end of generate Password function */
 
-function 
-// Write password to the #password input
 function writePassword() {
-    
+
     passwordLength = getPasswordLength();
-    includeLowercase = askForLowercase();
-    includeUppercase = askForUppercase();
-    includeNumbers = askForNumbers();
-    includeSpecChars = askForSpecChars();
-    generatePassword();
+
+    if (passwordIsGood) {
+      includeLowercase = askForLowercase();
+      includeUppercase = askForUppercase();
+      includeNumbers = askForNumbers();
+      includeSpecChars = askForSpecChars();
+      generatePassword();
+    }
      
     alert("Back in writePassword");
     /* var password = generatePassword();  */
@@ -144,5 +142,5 @@ function writePassword() {
     
 }
 
-// Add event listener to generate button
+/* Add event listener to generate button   */
 generateBtn.addEventListener("click", writePassword);
