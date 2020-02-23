@@ -10,4 +10,4 @@ After the password length has been validated, the user will be prompted for the 
 
 If no selections are chosen, a message will be displayed to the user stating that a password could not be generated. 
 
-If the user has selected one or multiple of the choices asked for, a password will be created and displayed on the screen.  The user can then copy and paste the password to whereever they wish to use it.  
+If the user has selected one or multiple of the choices asked for, a password will be created and displayed on the screen.  The user can then copy and paste the password to where they wish to use it.  
