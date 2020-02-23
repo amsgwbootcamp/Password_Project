@@ -3,14 +3,17 @@ var generateBtn = document.querySelector("#generate");
 var passwordNotValid = true;
 var newPassword = "";
 var includeNumbers = false;
+var includeLowercase = false;
 var allNumbers = "0123456789";
+var lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
 var masterArray = "";
+var randomArray = "";
 
 function askForLowercase() {
   // Ask if they want lowercase letters in their password. 
   var includeLowercase = confirm("Do you want lowercase letters in your password?" + "\n" + "Click Ok for yes and Cancel for no.");
   alert("You entered the following for Lowercase: " + includeLowercase); 
-  
+  return includeLowercase;
 }
 
 function askForUppercase() {
@@ -70,12 +73,24 @@ function generatePassword() {
 
     alert("includeNumbers is set to: " + includeNumbers);
     if (includeNumbers ==  true) {
-            var num1 = Math.floor(Math.random() * 10);
-            newPassword = newPassword.concat(allNumbers.charAt(num1));
-            masterArray = allNumbers.split("");
-            alert(newPassword);
-            alert(masterArray);
+        var num1 = Math.floor(Math.random() * 10);
+        newPassword = newPassword.concat(allNumbers.charAt(num1));
+        masterArray = masterArray.concat(allNumbers);
+        alert("New Password is: " + newPassword);
+        alert("MasterArray now contains: " + masterArray);
     }
+
+    alert("includeLowercase is set to: " + includeLowercase);
+    if (includeLowercase == true) {
+        var num2 = Math.floor(Math.random() * 26);
+        newPassword = newPassword.concat(lowercaseLetters.charAt(num2));
+        masterArray = masterArray.concat(lowercaseLetters);
+        alert("New Password is: " + newPassword);
+        alert("MasterArray now contains: " + masterArray);
+    }
+
+    randomArray = masterArray.split("");
+    alert("Random Array has: " + randomArray);
 
 } /* end of generate Password function */
 
@@ -83,7 +98,7 @@ function generatePassword() {
 function writePassword() {
     
     getPasswordLength();
-    askForLowercase();
+    includeLowercase = askForLowercase();
     askForUppercase();
     includeNumbers = askForNumbers();
     askForSpecChars();
