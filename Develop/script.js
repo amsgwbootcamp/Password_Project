@@ -1,6 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 var passwordNotValid = true;
+var passwordIsGood = false;
 var newPassword = "";
 var passwordLength = 0;
 var includeNumbers = false;
@@ -46,31 +47,38 @@ function askForSpecChars() {
   return includeSpecChars;
 }
 
-function getPasswordLength() {  /*  function getPasswordLength()      */
+function getPasswordLength() 
+{
+  /*  function getPasswordLength()      */
   // Prompt for length of password
   // Check the value to be greater than 8 and less than or equal to 128
   while (passwordNotValid) 
   { /* while loop */
     passwordLength = prompt("Please enter a value between 8 and 128.");
-    if (passwordLength.length != 0 && passwordLength != null) 
-    {   /* if not 0 or null */
+    if ((passwordLength.length != 0) && (passwordLength != null) && (typeof passwordLength == 'number')) 
+    {
         if (passwordLength < 8) 
-        {  /* if < 8  */
+        {  
           alert("Password length must be greater than 8.");   
-        }  /* end of if < 8  */
+        } 
         else if (passwordLength > 128) 
-        {   /* else if > 128  */
-          alert("Password length must be less than 128.");
-        }  /* end of else if */
+        {
+            alert("Password length must be less than 128.");
+        } 
         else 
-        {    /* else */
+        {
           alert("Password length has passed.");
           passwordNotValid = false;
-        }  /* end of else */
-    } else /* end of if check */ 
-      alert("Goodbye!!!!!");
-      passwordNotValid = false;
-  }  /* end of while */
+          passwordIsGood = true;
+        }   
+    }
+    else /* end of if check */ 
+    { 
+        alert("Goodbye!!!!!");
+        passwordNotValid = false;
+        passwordIsGood = false;  
+    }
+  }
   return passwordLength;
 }   /* end of function getPasswordLength  */
 
@@ -113,10 +121,12 @@ function generatePassword() {
         alert("MasterArray now contains: " + masterArray);
     }
     randomArray = masterArray.split("");
+    alert("Master Array has: " + masterArray);
     alert("Random Array has: " + randomArray);
 
 } /* end of generate Password function */
 
+function 
 // Write password to the #password input
 function writePassword() {
     
