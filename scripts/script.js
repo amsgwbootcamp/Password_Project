@@ -147,16 +147,18 @@ function writePassword() {
       includeLowercase = askForLowercase();
       includeUppercase = askForUppercase();
       includeNumbers = askForNumbers();
-      includeSpecChars = askForSpecChars();
-      password = generatePassword();
-      passwordText.value = password;
-      /* alert("Password Length is: " + passwordLength);
-      alert("Password generated is: " + newPassword);  */
+      includeSpecChars = askForSpecChars();}
+      if (includeLowercase == true || includeUppercase == true 
+          || includeNumbers == true || includeSpecChars == true) {
+            password = generatePassword();
+      }
+    } 
+      
+    if (passwordText.length > 7) {  
+        passwordText.value = password;
+    } else {
+        passwordText.value = "No Password Could Be Generated";
     }
-    else {
-      passwordText.value = "No Password Could Be Generated";
-    }
-  
 }
 
 /* Add event listener to generate button   */
