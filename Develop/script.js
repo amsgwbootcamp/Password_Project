@@ -5,6 +5,7 @@ var passwordNotValid = true;
 var passwordIsGood = true;
 var newPassword = "";
 var passwordLength = 0;
+var counter = 0;
 var includeNumbers = false;
 var includeLowercase = false;
 var includeUppercase = false;
@@ -88,7 +89,7 @@ function generatePassword() {
     if (includeNumbers ==  true) {
         var num1 = Math.floor(Math.random() * 10);
         newPassword = newPassword.concat(allNumbers.charAt(num1));
-        counter += 1;
+        counter = counter + 1;
         masterArray = masterArray.concat(allNumbers);
         /* alert("New Password is: " + newPassword);
         alert("MasterArray now contains: " + masterArray);     */
@@ -98,7 +99,7 @@ function generatePassword() {
     if (includeLowercase == true) {
         var num2 = Math.floor(Math.random() * 26);
         newPassword = newPassword.concat(lowercaseLetters.charAt(num2));
-        counter += 1;
+        counter = counter + 1;
         masterArray = masterArray.concat(lowercaseLetters);
         /* alert("New Password is: " + newPassword);
         alert("MasterArray now contains: " + masterArray);   */
@@ -108,7 +109,7 @@ function generatePassword() {
     if (includeUppercase == true) {
         var num3 = Math.floor(Math.random() * 26);
         newPassword = newPassword.concat(uppercaseLetters.charAt(num3));
-        counter += 1;
+        counter = counter + 1;
         masterArray = masterArray.concat(uppercaseLetters);
         /* alert("New Password is: " + newPassword);
         alert("MasterArray now contains: " + masterArray); */
@@ -118,7 +119,7 @@ function generatePassword() {
     if (includeSpecChars == true) {
         var num4 = Math.floor(Math.random() * 32);
         newPassword = newPassword.concat(specialCharacters.charAt(num4));
-        counter += 1;
+        counter = counter + 1;
         masterArray = masterArray.concat(specialCharacters);
         /* alert("New Password is: " + newPassword);
         alert("MasterArray now contains: " + masterArray);  */
@@ -126,8 +127,8 @@ function generatePassword() {
     
     /* alert("Master Array has: " + masterArray);
     alert("Random Array has: " + randomArray);  */
-
-    for (;counter < passwordLength; counter++) {
+    alert("Counter is set to: " + counter);
+    for (i = counter;i < passwordLength; i++) {
         /* alert("Counter is: " + counter);   */
         var num5 = Math.floor(Math.random() * masterArray.length-1);
         newPassword = newPassword.concat(masterArray.charAt(num5));
@@ -142,6 +143,7 @@ function writePassword() {
     passwordLength = getPasswordLength();
 
     if (passwordIsGood) {
+      counter = 0;
       includeLowercase = askForLowercase();
       includeUppercase = askForUppercase();
       includeNumbers = askForNumbers();
