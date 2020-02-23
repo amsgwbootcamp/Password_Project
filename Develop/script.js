@@ -2,10 +2,15 @@
 var generateBtn = document.querySelector("#generate");
 var passwordNotValid = true;
 var newPassword = "";
+var passwordLength = 0;
 var includeNumbers = false;
 var includeLowercase = false;
+var includeUppercase = false;
+var includeSpecChars = false;
 var allNumbers = "0123456789";
 var lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
+var uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var specialCharacters = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 var masterArray = "";
 var randomArray = "";
 
@@ -21,7 +26,7 @@ function askForUppercase() {
   
   var includeUppercase = confirm("Do you want uppercase letters in your password?" + "\n" + "Click Ok for yes and Cancel for no.");
   alert("You have entered the following for Uppercase: " + includeUppercase); 
-  
+  return includeUppercase;
 }
 
 function askForNumbers() {
@@ -38,7 +43,7 @@ function askForSpecChars() {
 
   var includeSpecChars = confirm("Do you want special characters in your password?" + "\n" + "Click Ok for yes and Cancel for no.");
   alert("You have entered the following for special characters: " + includeSpecChars);
-
+  return includeSpecChars;
 }
 
 function getPasswordLength() {  /*  function getPasswordLength()      */
@@ -66,6 +71,7 @@ function getPasswordLength() {  /*  function getPasswordLength()      */
       alert("Goodbye!!!!!");
       passwordNotValid = false;
   }  /* end of while */
+  return passwordLength;
 }   /* end of function getPasswordLength  */
 
 function generatePassword() {
@@ -89,6 +95,23 @@ function generatePassword() {
         alert("MasterArray now contains: " + masterArray);
     }
 
+    alert("includeUppercase is set to: " + includeUppercase);
+    if (includeUppercase == true) {
+        var num3 = Math.floor(Math.random() * 26);
+        newPassword = newPassword.concat(uppercaseLetters.charAt(num3));
+        masterArray = masterArray.concat(uppercaseLetters);
+        alert("New Password is: " + newPassword);
+        alert("MasterArray now contains: " + masterArray);
+    }
+
+    alert("includeSpecChars is set to: " + includeSpecChars);
+    if (includeSpecChars == true) {
+        var num4 = Math.floor(Math.random() * 32);
+        newPassword = newPassword.concat(specialCharacters.charAt(num4));
+        masterArray = masterArray.concat(specialCharacters);
+        alert("New Password is: " + newPassword);
+        alert("MasterArray now contains: " + masterArray);
+    }
     randomArray = masterArray.split("");
     alert("Random Array has: " + randomArray);
 
@@ -97,11 +120,11 @@ function generatePassword() {
 // Write password to the #password input
 function writePassword() {
     
-    getPasswordLength();
+    passwordLength = getPasswordLength();
     includeLowercase = askForLowercase();
-    askForUppercase();
+    includeUppercase = askForUppercase();
     includeNumbers = askForNumbers();
-    askForSpecChars();
+    includeSpecChars = askForSpecChars();
     generatePassword();
      
     alert("Back in writePassword");
