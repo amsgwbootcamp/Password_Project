@@ -1,11 +1,16 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 var passwordNotValid = true;
+var newPassword = "";
+var includeNumbers = false;
+var allNumbers = "0123456789";
+var masterArray = "";
 
 function askForLowercase() {
   // Ask if they want lowercase letters in their password. 
   var includeLowercase = confirm("Do you want lowercase letters in your password?" + "\n" + "Click Ok for yes and Cancel for no.");
   alert("You entered the following for Lowercase: " + includeLowercase); 
+  
 }
 
 function askForUppercase() {
@@ -21,6 +26,7 @@ function askForNumbers() {
   
   var includeNumbers = confirm("Do you want numbers in your password?" + "\n" + "Click Ok for yes and Cancel for no.");
   alert("You have entered the following for numbers: " + includeNumbers);    
+  return includeNumbers;
   
 } 
 
@@ -59,14 +65,29 @@ function getPasswordLength() {  /*  function getPasswordLength()      */
   }  /* end of while */
 }   /* end of function getPasswordLength  */
 
+function generatePassword() {
+  // Generate password and create master array from choices.  
+
+    alert("includeNumbers is set to: " + includeNumbers);
+    if (includeNumbers ==  true) {
+            var num1 = Math.floor(Math.random() * 10);
+            newPassword = newPassword.concat(allNumbers.charAt(num1));
+            masterArray = allNumbers.split("");
+            alert(newPassword);
+            alert(masterArray);
+    }
+
+} /* end of generate Password function */
+
 // Write password to the #password input
 function writePassword() {
     
     getPasswordLength();
     askForLowercase();
     askForUppercase();
-    askForNumbers();
+    includeNumbers = askForNumbers();
     askForSpecChars();
+    generatePassword();
      
     alert("Back in writePassword");
     /* var password = generatePassword();  */
