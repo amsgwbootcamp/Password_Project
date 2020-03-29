@@ -1,6 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 var passwordText = document.querySelector("#password");
+var resetBtn = document.querySelector("#reset");
 var passwordNotValid = true;
 var passwordIsGood = true;
 var newPassword = "";
@@ -107,6 +108,18 @@ function generatePassword() {
 
 } 
 
+function resetScreen() {
+  passwordNotValid = true;
+  passwordIsGood = true;
+  newPassword = "";
+  passwordLength = 0;
+  includeNumbers = false;
+  includeLowercase = false;
+  includeUppercase = false;
+  includeSpecChars = false;
+  passwordText.value = "Your Secure Password";
+}
+
 function writePassword() {
     /*  Master Driver for creating the password */
     passwordLength = getPasswordLength();
@@ -132,3 +145,6 @@ function writePassword() {
 
 /* Add event listener to generate button   */
 generateBtn.addEventListener("click", writePassword);
+
+/* Add event listener to reset button   */
+resetBtn.addEventListener("click", resetScreen);
